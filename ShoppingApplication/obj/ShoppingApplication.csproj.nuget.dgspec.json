@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ShoppingSolution\\ShoppingApplication\\ShoppingApplication.csproj": {}
+    "D:\\ShoppingApplications\\ShoppingApplication\\ShoppingApplication.csproj": {}
   },
   "projects": {
-    "D:\\ShoppingSolution\\ShoppingApplication\\ShoppingApplication.csproj": {
+    "D:\\ShoppingApplications\\ShoppingApplication\\ShoppingApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ShoppingSolution\\ShoppingApplication\\ShoppingApplication.csproj",
+        "projectUniqueName": "D:\\ShoppingApplications\\ShoppingApplication\\ShoppingApplication.csproj",
         "projectName": "ShoppingApplication",
-        "projectPath": "D:\\ShoppingSolution\\ShoppingApplication\\ShoppingApplication.csproj",
-        "packagesPath": "C:\\Users\\sridhar.shanmugam\\.nuget\\packages\\",
-        "outputPath": "D:\\ShoppingSolution\\ShoppingApplication\\obj\\",
+        "projectPath": "D:\\ShoppingApplications\\ShoppingApplication\\ShoppingApplication.csproj",
+        "packagesPath": "C:\\Users\\sushmitha.gangula\\.nuget\\packages\\",
+        "outputPath": "D:\\ShoppingApplications\\ShoppingApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\sridhar.shanmugam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sushmitha.gangula\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

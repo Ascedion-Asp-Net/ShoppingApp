@@ -33,6 +33,7 @@ namespace ShoppingApplication
             app.MapControllers();
 
             app.Run();
+          //  alert("sus");
         }
     }
 }
