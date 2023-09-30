@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ShoppingApplication.Context;
+
 namespace ShoppingApplication
 {
     public class Program
@@ -12,7 +15,9 @@ namespace ShoppingApplication
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddDbContext<dbContext>(opts => {
+                opts.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
