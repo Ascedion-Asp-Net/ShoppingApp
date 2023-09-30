@@ -1,0 +1,19 @@
+<body>
+    <div class="alert alert-primary">
+        Product Id : <input class="form-control" type="text" [(ngModel)]="product.id">
+
+        Product Name : <input class="form-control" type="text" [(ngModel)]="product.name">
+
+        Product Quantity : <input class="form-control" type="text" [(ngModel)]="product.quantity">
+
+        Product Image : <input  class="form-control" (change)="assignFile(pic)" #pic  type="file">
+
+        <button (click)="addProducts()" class="btn btn-dark">
+            Add Product
+            <span [class]="className">
+
+            </span>
+        </button>
+
+    </div>
+</body>

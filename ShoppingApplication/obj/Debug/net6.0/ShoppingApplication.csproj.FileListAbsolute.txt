@@ -40,3 +40,14 @@ D:\ShoppingSolution\ShoppingApplication\obj\Debug\net6.0\refint\ShoppingApplicat
 D:\ShoppingSolution\ShoppingApplication\obj\Debug\net6.0\ShoppingApplication.pdb
 D:\ShoppingSolution\ShoppingApplication\obj\Debug\net6.0\ShoppingApplication.genruntimeconfig.cache
 D:\ShoppingSolution\ShoppingApplication\obj\Debug\net6.0\ref\ShoppingApplication.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\ShoppingSolution\ShoppingApplication\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
