@@ -1,19 +1,22 @@
-<body>
-    <div class="alert alert-primary">
-        Product Id : <input class="form-control" type="text" [(ngModel)]="product.id">
+<div  *ngIf="product.length > 0 else nohotels" >
 
-        Product Name : <input class="form-control" type="text" [(ngModel)]="product.name">
 
-        Product Quantity : <input class="form-control" type="text" [(ngModel)]="product.quantity">
-
-        Product Image : <input  class="form-control" (change)="assignFile(pic)" #pic  type="file">
-
-        <button (click)="addProducts()" class="btn btn-dark">
-            Add Product
-            <span [class]="className">
-<!-- testchecking -->
-            </span>
-        </button>
-
+<div class="alert alert-primary" *ngFor="let productdata of product">
+    ProductId:{{productdata.ProductId}}
+    <br/>
+    ProductName:{{productdata.ProductName}}
+    <br/>
+    ProductPrice:{{productdata.ProductPrice}}
+    <br/>
+    ProductQuantity:{{productdata.ProductQuantity}}
+    <br/>
+    ProductImage:{{productdata.ProductImage}}
+    <br/>
+    ProductType:{{productdata.ProductStatus}}
+    <br/>
+    ProductStatus:{{productdata.ProductStatus}}
+    <br/>
     </div>
-</body>
+</div>
+<ng-template #nohotels >
+    <div class="alert alert-warning">No hotels</div></ng-template>

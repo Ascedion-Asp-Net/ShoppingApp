@@ -12,7 +12,7 @@ using ShoppingApplication.Context;
 namespace ShoppingApplication.Migrations
 {
     [DbContext(typeof(dbContext))]
-    [Migration("20230930100216_inital")]
+    [Migration("20230930172649_inital")]
     partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ namespace ShoppingApplication.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Carts");
+                    b.ToTable("carts");
                 });
 
             modelBuilder.Entity("ShoppingApplication.Models.Orders", b =>
@@ -76,7 +76,7 @@ namespace ShoppingApplication.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("orders");
                 });
 
             modelBuilder.Entity("ShoppingApplication.Models.Product", b =>
@@ -109,7 +109,19 @@ namespace ShoppingApplication.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Products");
+                    b.ToTable("products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 11,
+                            ProductImage = "image",
+                            ProductName = "car",
+                            ProductPrice = 1000000.0,
+                            ProductQuantity = 2.0,
+                            ProductStatus = true,
+                            ProductType = "vechical"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingApplication.Models.User", b =>
@@ -142,7 +154,7 @@ namespace ShoppingApplication.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("ShoppingApplication.Models.Carts", b =>

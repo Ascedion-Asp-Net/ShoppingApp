@@ -11,7 +11,7 @@ namespace ShoppingApplication.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "products",
                 columns: table => new
                 {
                     ProductId = table.Column<int>(type: "integer", nullable: false)
@@ -25,11 +25,11 @@ namespace ShoppingApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.ProductId);
+                    table.PrimaryKey("PK_products", x => x.ProductId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "users",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "integer", nullable: false)
@@ -42,11 +42,11 @@ namespace ShoppingApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.PrimaryKey("PK_users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Carts",
+                name: "carts",
                 columns: table => new
                 {
                     CartId = table.Column<int>(type: "integer", nullable: false)
@@ -57,23 +57,23 @@ namespace ShoppingApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Carts", x => x.CartId);
+                    table.PrimaryKey("PK_carts", x => x.CartId);
                     table.ForeignKey(
-                        name: "FK_Carts_Products_ProductId",
+                        name: "FK_carts_products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Products",
+                        principalTable: "products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Carts_Users_UserId",
+                        name: "FK_carts_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "orders",
                 columns: table => new
                 {
                     OrderId = table.Column<int>(type: "integer", nullable: false)
@@ -85,55 +85,60 @@ namespace ShoppingApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                    table.PrimaryKey("PK_orders", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Orders_Products_ProductId",
+                        name: "FK_orders_products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Products",
+                        principalTable: "products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Users_UserId",
+                        name: "FK_orders_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "products",
+                columns: new[] { "ProductId", "ProductImage", "ProductName", "ProductPrice", "ProductQuantity", "ProductStatus", "ProductType" },
+                values: new object[] { 11, "image", "car", 1000000.0, 2.0, true, "vechical" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Carts_ProductId",
-                table: "Carts",
+                name: "IX_carts_ProductId",
+                table: "carts",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carts_UserId",
-                table: "Carts",
+                name: "IX_carts_UserId",
+                table: "carts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_ProductId",
-                table: "Orders",
+                name: "IX_orders_ProductId",
+                table: "orders",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_UserId",
-                table: "Orders",
+                name: "IX_orders_UserId",
+                table: "orders",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Carts");
+                name: "carts");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "orders");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "products");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "users");
         }
     }
 }
