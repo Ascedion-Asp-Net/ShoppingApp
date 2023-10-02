@@ -35,8 +35,8 @@ namespace ShoppingApplication.Migrations
                     UserId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Username = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<byte[]>(type: "bytea", nullable: false),
-                    Key = table.Column<byte[]>(type: "bytea", nullable: false),
+                    Password = table.Column<byte[]>(type: "bytea", nullable: true),
+                    Key = table.Column<byte[]>(type: "bytea", nullable: true),
                     Address = table.Column<string>(type: "text", nullable: false),
                     Phonenumber = table.Column<string>(type: "text", nullable: false)
                 },
@@ -104,6 +104,11 @@ namespace ShoppingApplication.Migrations
                 table: "products",
                 columns: new[] { "ProductId", "ProductImage", "ProductName", "ProductPrice", "ProductQuantity", "ProductStatus", "ProductType" },
                 values: new object[] { 11, "image", "car", 1000000.0, 2.0, true, "vechical" });
+
+            migrationBuilder.InsertData(
+                table: "users",
+                columns: new[] { "UserId", "Address", "Key", "Password", "Phonenumber", "Username" },
+                values: new object[] { 101, "123", null, null, "89111", "sri" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_carts_ProductId",

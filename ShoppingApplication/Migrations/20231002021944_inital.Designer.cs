@@ -12,7 +12,7 @@ using ShoppingApplication.Context;
 namespace ShoppingApplication.Migrations
 {
     [DbContext(typeof(dbContext))]
-    [Migration("20230930172649_inital")]
+    [Migration("20231002021944_inital")]
     partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,8 @@ namespace ShoppingApplication.Migrations
                     b.Property<int>("ProductQuntity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
+                        .IsRequired()
                         .HasColumnType("integer");
 
                     b.HasKey("CartId");
@@ -67,7 +68,8 @@ namespace ShoppingApplication.Migrations
                     b.Property<double>("ProductQuantity")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
+                        .IsRequired()
                         .HasColumnType("integer");
 
                     b.HasKey("OrderId");
@@ -137,11 +139,9 @@ namespace ShoppingApplication.Migrations
                         .HasColumnType("text");
 
                     b.Property<byte[]>("Key")
-                        .IsRequired()
                         .HasColumnType("bytea");
 
                     b.Property<byte[]>("Password")
-                        .IsRequired()
                         .HasColumnType("bytea");
 
                     b.Property<string>("Phonenumber")
@@ -155,6 +155,15 @@ namespace ShoppingApplication.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 101,
+                            Address = "123",
+                            Phonenumber = "89111",
+                            Username = "sri"
+                        });
                 });
 
             modelBuilder.Entity("ShoppingApplication.Models.Carts", b =>
