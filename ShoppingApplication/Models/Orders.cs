@@ -8,12 +8,12 @@ namespace ShoppingApplication.Models
     {
         [Key]
         public int OrderId { get; set; }
-        public int? UserId { get; set; }
+        public string UserName { get; set; }
         public int ProductId { get; set; }
         public double ProductQuantity { get; set; }
         public DateTime OrderDate { get; set; }
 
-        [ForeignKey("UserId")]
+        [ForeignKey("UserName")]
         public User User { get; set; }
         [ForeignKey("ProductId")]
         public Product  Product { get; set; }

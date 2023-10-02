@@ -19,8 +19,7 @@ namespace ShoppingApplication.Context
 
             modelBuilder.Entity<Product>().HasData(
                 new Product { ProductId = 11, ProductName = "car", ProductPrice = 1000000, ProductQuantity = 2, ProductImage = "image", ProductType = "vechical", ProductStatus = true });
-            modelBuilder.Entity<User>().HasData(
-                   new User { UserId = 101, Username = "sri", Address = "123", Phonenumber = "89111" });
+           
         } 
 
     }

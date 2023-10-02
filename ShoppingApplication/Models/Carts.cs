@@ -8,9 +8,10 @@ namespace ShoppingApplication.Models
         [Key]
         public int CartId { get; set; }
         public int ProductId { get; set; }
+        public string Username { get; set; }
         public int ProductQuntity { get; set; }
-        public int? UserId { get; set; }
-        [ForeignKey("UserId")]
+     
+        [ForeignKey("Username")]
         public User User { get; set; }
         [ForeignKey("ProductId")]
         public Product Product { get; set; }

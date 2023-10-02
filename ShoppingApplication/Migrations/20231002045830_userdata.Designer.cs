@@ -12,8 +12,8 @@ using ShoppingApplication.Context;
 namespace ShoppingApplication.Migrations
 {
     [DbContext(typeof(dbContext))]
-    [Migration("20231002021944_inital")]
-    partial class inital
+    [Migration("20231002045830_userdata")]
+    partial class userdata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,15 +38,15 @@ namespace ShoppingApplication.Migrations
                     b.Property<int>("ProductQuntity")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("UserId")
+                    b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("integer");
+                        .HasColumnType("text");
 
                     b.HasKey("CartId");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("Username");
 
                     b.ToTable("carts");
                 });
@@ -68,15 +68,15 @@ namespace ShoppingApplication.Migrations
                     b.Property<double>("ProductQuantity")
                         .HasColumnType("double precision");
 
-                    b.Property<int?>("UserId")
+                    b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("integer");
+                        .HasColumnType("text");
 
                     b.HasKey("OrderId");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserName");
 
                     b.ToTable("orders");
                 });
@@ -128,42 +128,26 @@ namespace ShoppingApplication.Migrations
 
             modelBuilder.Entity("ShoppingApplication.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
+                    b.Property<string>("Username")
+                        .HasColumnType("text");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<byte[]>("Key")
+                        .IsRequired()
                         .HasColumnType("bytea");
 
                     b.Property<byte[]>("Password")
+                        .IsRequired()
                         .HasColumnType("bytea");
 
                     b.Property<string>("Phonenumber")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("UserId");
+                    b.HasKey("Username");
 
                     b.ToTable("users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 101,
-                            Address = "123",
-                            Phonenumber = "89111",
-                            Username = "sri"
-                        });
                 });
 
             modelBuilder.Entity("ShoppingApplication.Models.Carts", b =>
@@ -176,7 +160,7 @@ namespace ShoppingApplication.Migrations
 
                     b.HasOne("ShoppingApplication.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("Username")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -195,7 +179,7 @@ namespace ShoppingApplication.Migrations
 
                     b.HasOne("ShoppingApplication.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

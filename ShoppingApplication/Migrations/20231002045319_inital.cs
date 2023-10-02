@@ -32,17 +32,15 @@ namespace ShoppingApplication.Migrations
                 name: "users",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Username = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<byte[]>(type: "bytea", nullable: true),
-                    Key = table.Column<byte[]>(type: "bytea", nullable: true),
+                    Password = table.Column<byte[]>(type: "bytea", nullable: false),
+                    Key = table.Column<byte[]>(type: "bytea", nullable: false),
                     Address = table.Column<string>(type: "text", nullable: false),
                     Phonenumber = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_users", x => x.UserId);
+                    table.PrimaryKey("PK_users", x => x.Username);
                 });
 
             migrationBuilder.CreateTable(
@@ -52,8 +50,8 @@ namespace ShoppingApplication.Migrations
                     CartId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
-                    ProductQuntity = table.Column<int>(type: "integer", nullable: false),
-                    UserId = table.Column<int>(type: "integer", nullable: false)
+                    Username = table.Column<string>(type: "text", nullable: false),
+                    ProductQuntity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,10 +63,10 @@ namespace ShoppingApplication.Migrations
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_carts_users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_carts_users_Username",
+                        column: x => x.Username,
                         principalTable: "users",
-                        principalColumn: "UserId",
+                        principalColumn: "Username",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -78,7 +76,7 @@ namespace ShoppingApplication.Migrations
                 {
                     OrderId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    UserName = table.Column<string>(type: "text", nullable: false),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
                     ProductQuantity = table.Column<double>(type: "double precision", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
@@ -93,10 +91,10 @@ namespace ShoppingApplication.Migrations
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_orders_users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_orders_users_UserName",
+                        column: x => x.UserName,
                         principalTable: "users",
-                        principalColumn: "UserId",
+                        principalColumn: "Username",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -105,20 +103,15 @@ namespace ShoppingApplication.Migrations
                 columns: new[] { "ProductId", "ProductImage", "ProductName", "ProductPrice", "ProductQuantity", "ProductStatus", "ProductType" },
                 values: new object[] { 11, "image", "car", 1000000.0, 2.0, true, "vechical" });
 
-            migrationBuilder.InsertData(
-                table: "users",
-                columns: new[] { "UserId", "Address", "Key", "Password", "Phonenumber", "Username" },
-                values: new object[] { 101, "123", null, null, "89111", "sri" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_carts_ProductId",
                 table: "carts",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_carts_UserId",
+                name: "IX_carts_Username",
                 table: "carts",
-                column: "UserId");
+                column: "Username");
 
             migrationBuilder.CreateIndex(
                 name: "IX_orders_ProductId",
@@ -126,9 +119,9 @@ namespace ShoppingApplication.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_orders_UserId",
+                name: "IX_orders_UserName",
                 table: "orders",
-                column: "UserId");
+                column: "UserName");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

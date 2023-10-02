@@ -32,22 +32,12 @@ namespace ShoppingApplication.Controllers
         [HttpPost("Register")]
         public ActionResult Register(UserDTO userDTO)
         {
-            var registerdata = new User();
-            registerdata.Username = userDTO.Username;
-            HMACSHA512 hMACSHA512 = new HMACSHA512();
-            registerdata.Password = hMACSHA512.ComputeHash(Encoding.UTF8.GetBytes(userDTO.Password));
-           
-
-
-
             var result = _userService.Register(userDTO);
-           
             if (result == null)
             {
                 return BadRequest();
             }
             return Ok(result);
         }
-
     }
 }

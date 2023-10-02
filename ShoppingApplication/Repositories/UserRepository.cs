@@ -1,11 +1,12 @@
-﻿using ShoppingApplication.Context;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ShoppingApplication.Context;
 using ShoppingApplication.Interfaces;
 using ShoppingApplication.Models;
 
 namespace ShoppingApplication.Repositories
 {
 
-    public class UserRepository : IRepository<int, User>
+    public class UserRepository : IRepository<string, User>
 
     {
         private readonly dbContext _context;
@@ -14,6 +15,7 @@ namespace ShoppingApplication.Repositories
         {
             _context = context;
         }
+
         public User Add(User item)
         {
             _context.users.Add(item);
@@ -21,21 +23,28 @@ namespace ShoppingApplication.Repositories
             return item;
         }
 
-        public User Delete(int key)
+        public User Delete(string key)
         {
-            var user = _context.users.FirstOrDefault(u => u.UserId == key);
+            var user = Get(key);
             if (user != null)
             {
                 _context.users.Remove(user);
                 _context.SaveChanges();
-                return user;
             }
             return null;
         }
 
+
+
+        public User Get(string key)
+        {
+            var user = _context.users.FirstOrDefault(u => u.Username == key);
+            return user;
+        }
+
         public User Get(int key)
         {
-            return _context.users.FirstOrDefault(u => u.UserId == key);
+            throw new NotImplementedException();
         }
 
         public List<User> GetAll()
@@ -45,14 +54,9 @@ namespace ShoppingApplication.Repositories
 
         public User Update(User item)
         {
-            var user = _context.users.FirstOrDefault(u => u.UserId == item.UserId);
-            if (user != null)
-            {
-                _context.users.Update(user);
-                _context.SaveChanges();
-                return user;
-            }
-            return null;
+            _context.Entry<User>(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+            return item;
         }
     }
 }

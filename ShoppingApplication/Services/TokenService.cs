@@ -13,7 +13,7 @@ namespace ShoppingApplication.Services
         {
             key = Encoding.UTF8.GetBytes(configuration.GetValue(typeof(string), "TokenKey").ToString());
         }
-        public string GenerateToken(string username, string role)
+        public string GenerateToken(string username)
         {
             string token = string.Empty;
             //Username for the token - from the parameter
@@ -21,7 +21,7 @@ namespace ShoppingApplication.Services
             var subject = new ClaimsIdentity(new[]
             {
                 new Claim(ClaimTypes.Name, username),
-                new Claim(ClaimTypes.Role,role)
+               
             });
             var tokenDescription = new SecurityTokenDescriptor();
             //Describing the token
@@ -37,9 +37,6 @@ namespace ShoppingApplication.Services
             return token;
         }
 
-        public string GenerateToken(string username)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

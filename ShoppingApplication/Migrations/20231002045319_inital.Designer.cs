@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ShoppingApplication.Context;
@@ -11,9 +12,10 @@ using ShoppingApplication.Context;
 namespace ShoppingApplication.Migrations
 {
     [DbContext(typeof(dbContext))]
-    partial class dbContextModelSnapshot : ModelSnapshot
+    [Migration("20231002045319_inital")]
+    partial class inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,6 +132,7 @@ namespace ShoppingApplication.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<byte[]>("Key")
@@ -141,6 +144,7 @@ namespace ShoppingApplication.Migrations
                         .HasColumnType("bytea");
 
                     b.Property<string>("Phonenumber")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Username");

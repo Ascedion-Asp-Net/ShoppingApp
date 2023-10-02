@@ -9,10 +9,10 @@ namespace ShoppingApplication.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<int, User> _repository;
+        private readonly IRepository<string, User> _repository;
         private readonly ITokenService _tokenService;
 
-        public UserService(IRepository<int, User> repository, ITokenService tokenService)
+        public UserService(IRepository<string, User> repository, ITokenService tokenService)
         {
             _repository = repository;
             _tokenService = tokenService;
@@ -21,9 +21,8 @@ namespace ShoppingApplication.Services
 
         public UserDTO Login(UserDTO userDTO)
         {
-           
-            /*  var user = _repository.Get(userDTO.UserId);*/
-           /* if (user != null)
+            var user = _repository.Get(userDTO.Username);
+            if (user != null)
             {
                 var dbPass = user.Password;
                 HMACSHA512 hMACSHA512 = new HMACSHA512(user.Key);
@@ -42,10 +41,9 @@ namespace ShoppingApplication.Services
                     };
                     return loggedinUser;
                 }
-            }*/
+            }
             return null;
         }
-
 
         public UserDTO Register(UserDTO userDTO)
         {
@@ -53,7 +51,7 @@ namespace ShoppingApplication.Services
             User user = new User();
             user.Username = userDTO.Username;
             user.Password = hMACSHA512.ComputeHash(Encoding.UTF8.GetBytes(userDTO.Password));
-
+            
             user.Key = hMACSHA512.Key;
             _repository.Add(user);
             var regiteredUser = new UserDTO
@@ -63,7 +61,6 @@ namespace ShoppingApplication.Services
             };
             return regiteredUser;
         }
-
 
     }
 }

@@ -35,9 +35,9 @@ namespace ShoppingApplication.Controllers
                 {
                     var cartdata=new Carts();
                     cartdata.CartId = carts.CartId;
-                    cartdata.ProductId=carts.ProductId;
+                    cartdata.ProductId = carts.ProductId;
                     cartdata.ProductQuntity= carts.ProductQuntity;
-                    cartdata.UserId = carts.UserId;
+                    cartdata.Username = carts.UserName;
 
                     var result = _cartsService.AddCarts(cartdata);
                     return Created("", result);

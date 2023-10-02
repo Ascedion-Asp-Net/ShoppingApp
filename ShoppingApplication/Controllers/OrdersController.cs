@@ -36,7 +36,7 @@ namespace ShoppingApplication.Controllers
                 try
                 {
                     var OrderDatas = new Orders();
-                    OrderDatas.UserId = ordersdata.UserId;
+                    OrderDatas.UserName = ordersdata.UserName;
                     OrderDatas.ProductId = ordersdata.ProductId;
                     OrderDatas.ProductQuantity = ordersdata.ProductQuantity;
                     OrderDatas.OrderDate = ordersdata.OrderDate;
