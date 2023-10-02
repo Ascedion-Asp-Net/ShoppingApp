@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ShoppingApplication.Interfaces;
 using ShoppingApplication.Models;
+using ShoppingApplication.Models.DTOs;
 
 namespace ShoppingApplication.Controllers
 {
@@ -26,13 +27,19 @@ namespace ShoppingApplication.Controllers
             return Ok(cartsdata);
         }
         [HttpPost]
-        public ActionResult Post(Carts carts)
+        public ActionResult Post(CartsDTO carts)
         {
             if(ModelState.IsValid)
             {
                 try
                 {
-                    var result = _cartsService.AddCarts(carts);
+                    var cartdata=new Carts();
+                    cartdata.CartId = carts.CartId;
+                    cartdata.ProductId=carts.ProductId;
+                    cartdata.ProductQuntity= carts.ProductQuntity;
+                    cartdata.UserId = carts.UserId;
+
+                    var result = _cartsService.AddCarts(cartdata);
                     return Created("", result);
                 }catch (Exception ex)
                 {

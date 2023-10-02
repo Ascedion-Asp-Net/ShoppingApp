@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ShoppingApplication.Interfaces;
 using ShoppingApplication.Models;
+using ShoppingApplication.Models.DTOs;
 using ShoppingApplication.Services;
 
 namespace ShoppingApplication.Controllers
@@ -29,8 +30,25 @@ namespace ShoppingApplication.Controllers
 
         }
         [HttpPost]
-        public ActionResult Post(Orders ordersdata) {
-            return null;
+        public ActionResult Post(OrdersDTO ordersdata) {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var OrderDatas = new Orders();
+                    OrderDatas.UserId = ordersdata.UserId;
+                    OrderDatas.ProductId = ordersdata.ProductId;
+                    OrderDatas.ProductQuantity = ordersdata.ProductQuantity;
+                    OrderDatas.OrderDate = ordersdata.OrderDate;
+                    var result = _orderServie.AddOreders(OrderDatas);
+
+                    return Created("", result);
+                }catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+            return BadRequest(ModelState.Keys);
         }
         [HttpDelete] public IActionResult Delete(int id)
         {
