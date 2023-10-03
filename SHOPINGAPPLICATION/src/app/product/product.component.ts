@@ -24,6 +24,10 @@ resultdata:any;
   orders(){
 
   }
+  logout(){
+    sessionStorage.removeItem("token");
+    this.router.navigateByUrl("");
+  }
   // showData(data:any)
   // {
   // console.log(data);
