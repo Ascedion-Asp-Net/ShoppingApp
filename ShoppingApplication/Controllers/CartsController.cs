@@ -51,9 +51,25 @@ namespace ShoppingApplication.Controllers
 
         }
         [HttpPut]
-        public ActionResult Put(Carts carts)
+        public ActionResult Put(CartsDTO carts)
         {
-            return null;
+            try
+            {
+                var cartdata = new Carts();
+                cartdata.CartId = carts.CartId;
+                cartdata.ProductId = carts.ProductId;
+                cartdata.ProductQuntity = carts.ProductQuntity;
+                cartdata.Username = carts.UserName;
+
+                var result = _cartsService.UpdateCarts(cartdata);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            
         }
 
 

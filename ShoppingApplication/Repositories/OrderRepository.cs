@@ -42,13 +42,20 @@ namespace ShoppingApplication.Repositories
 
         public Orders Update(Orders item)
         {
-            var result = _context.orders.FirstOrDefault(o => o.OrderId == item.OrderId);
-            if (result != null)
+            var orderdata = _context.orders.FirstOrDefault(o => o.OrderId == item.OrderId);
+            if (orderdata != null)
             {
-                _context.orders.Remove(result);
-                _context.SaveChanges();
+                orderdata.UserName = item.UserName;
+                orderdata.ProductId = item.ProductId;
+                orderdata.ProductQuantity = item.ProductQuantity;
+                orderdata.OrderDate = item.OrderDate;
 
-                return result;
+                _context.orders.Update(orderdata);
+                _context.SaveChanges(true);
+
+                
+
+                return orderdata;
             }
             return null;
         }

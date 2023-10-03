@@ -1,6 +1,7 @@
 ﻿using ShoppingApplication.Context;
 using ShoppingApplication.Interfaces;
 using ShoppingApplication.Models;
+using ShoppingApplication.Models.DTOs;
 
 namespace ShoppingApplication.Repositories
 {
@@ -46,11 +47,16 @@ namespace ShoppingApplication.Repositories
         public Carts Update(Carts item)
         {
             var cart = _context.carts.FirstOrDefault(c => c.CartId == item.CartId);
-            if (item != null)
+            if (cart != null)
             {
-                _context.carts.Update(item);
+                cart.ProductId = item.ProductId;
+                cart.Username = item.Username;
+                cart.ProductQuntity = item.ProductQuntity;
+               
+
+                _context.carts.Update(cart);
                 _context.SaveChanges();
-                return item;
+                return cart;
             }
             return null;
         }

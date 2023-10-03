@@ -50,7 +50,8 @@ namespace ShoppingApplication.Controllers
             }
             return BadRequest(ModelState.Keys);
         }
-        [HttpDelete] public IActionResult Delete(int id)
+        [HttpDelete] 
+        public IActionResult Delete(int id)
         {
             try
             {
@@ -65,13 +66,17 @@ namespace ShoppingApplication.Controllers
             }
         }
         [HttpPut]
-        public ActionResult Put(int id)
+        public ActionResult Put(OrdersDTO orders)
         {
             try
             {
-                var result = _orderServie.DeleteOrders(id);
-                if (result == null)
-                    return NotFound();
+               var orderdata=new Orders();
+                orderdata.OrderId = orders.OrderId;
+                orderdata.UserName = orders.UserName;
+                orderdata.ProductId = orders.ProductId;
+                orderdata.ProductQuantity = orders.ProductQuantity;
+                orderdata.OrderDate = orders.OrderDate;
+                var result=_orderServie.UpdateOrders(orderdata);
                 return Ok(result);
             }
             catch (Exception e)
