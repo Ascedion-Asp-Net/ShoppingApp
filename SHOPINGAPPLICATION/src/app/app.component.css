@@ -1,0 +1,14 @@
+h1 {
+    position: absolute;
+    left: 30%; /* Start at the left edge of the container */
+    animation: moveLeftToRight 5s linear infinite alternate; /* Alternate between left and right */
+}
+
+@keyframes moveLeftToRight {
+    0% {
+        transform: translateX(-100%); /* Move the h1 to the right by 100% of its own width */
+    }
+    100% {
+        transform: translateX(200%); /* Move the h1 to the right by 100% of its own width */
+    }
+}

@@ -1,22 +1,31 @@
-<div  *ngIf="product.length > 0 else nohotels" >
+<body>
+<div  *ngIf="resultdata.length > 0 else nohotels" >
 
 
-<div class="alert alert-primary" *ngFor="let productdata of product">
-    ProductId:{{productdata.ProductId}}
+<div class="alert alert-primary" *ngFor="let productdata of resultdata">
+
+    <img class="card-img-top" [src]="productdata.productImage" alt="Card image cap">
+
+            <br/>
+    ProductId:{{productdata.productId}}
     <br/>
-    ProductName:{{productdata.ProductName}}
+    ProductName:{{productdata.productName}}
     <br/>
-    ProductPrice:{{productdata.ProductPrice}}
+    ProductPrice:{{productdata.productPrice}}
     <br/>
-    ProductQuantity:{{productdata.ProductQuantity}}
+    ProductQuantity:{{productdata.productQuantity}}
+    <!-- <br/>
+    ProductImage:{{productdata.productImage}} -->
     <br/>
-    ProductImage:{{productdata.ProductImage}}
+    ProductType:{{productdata.productStatus}}
     <br/>
-    ProductType:{{productdata.ProductStatus}}
+    ProductStatus:{{productdata.productStatus}}
     <br/>
-    ProductStatus:{{productdata.ProductStatus}}
-    <br/>
+      <button (click)="carts()"  class="btn btn-warning">Add Cart</button>
+            <button (click)="orders()"   class="btn btn-primary">Oreder </button>
     </div>
+   
 </div>
 <ng-template #nohotels >
     <div class="alert alert-warning">No product</div></ng-template>
+</body>

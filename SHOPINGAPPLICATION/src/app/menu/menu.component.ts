@@ -14,17 +14,10 @@ export class MenuComponent {
     sessionStorage.removeItem("token");
     this.router.navigateByUrl("");
   }
-  AddHotel(){
-  this.router.navigateByUrl("addHotel");
+ 
+  product(){
+    this.router.navigateByUrl("product");
   }
-  Hotel(){
-    this.router.navigateByUrl("hotels");
-  }
-  Rooms(){
-    this.router.navigateByUrl("rooms");
-  }
-  Book(){
-    this.router.navigateByUrl("bookings");
-  }
+ 
 
 }

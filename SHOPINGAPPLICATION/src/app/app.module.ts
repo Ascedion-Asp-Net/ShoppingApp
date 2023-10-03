@@ -18,6 +18,7 @@ import { UserService } from 'src/services/users.ervice';
 import { CartsComponent } from './carts/carts.component';
 import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
+import { Cartsservice } from 'src/services/cart.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { RegisterComponent } from './register/register.component';
   // })
     
   ],
-  providers: [ShoppingWebService,UserService],
+  providers: [ShoppingWebService,UserService,Cartsservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

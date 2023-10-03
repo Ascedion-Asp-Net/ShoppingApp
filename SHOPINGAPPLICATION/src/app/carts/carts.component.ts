@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Cartsservice } from 'src/services/cart.service';
+import { ShoppingWebService } from 'src/services/shoppingweb.service';
 
 @Component({
   selector: 'app-carts',
@@ -6,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./carts.component.css']
 })
 export class CartsComponent {
-
+  // resultdata:any;
+  // constructor(private cartsservice:Cartsservice,private router:Router){
+  //   this.cartsservice.CartsList().subscribe(data=>{
+  //     console.log(data);
+  //     this.resultdata=data;
+  //   })
+  // }
 }

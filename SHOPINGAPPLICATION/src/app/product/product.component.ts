@@ -9,13 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
-  product:Product[]=[];
+
+resultdata:any;
   constructor(private prductservice:ShoppingWebService,private router:Router){
     this.prductservice.ProductList().subscribe(data=>{
       console.log(data);
-      this.product=data as Product[];
+      this.resultdata=data;
     })
   }
+  carts(){
+
+  }
+  orders(){}
   showData(data:any)
   {
   console.log(data);
