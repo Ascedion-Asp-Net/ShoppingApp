@@ -22,7 +22,7 @@ export class LoginComponent {
       this.user = result as User;
       sessionStorage.setItem("token",this.user.token); //token session madhe store kelay 
       alert("Login success");
-      this.router.navigateByUrl("")
+      this.router.navigateByUrl("product")
     })
   }
   

@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from 'src/services/users.ervice';
 import { CartsComponent } from './carts/carts.component';
 import { MenuComponent } from './menu/menu.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MenuComponent } from './menu/menu.component';
    
     LoginComponent,
         CartsComponent,
-        MenuComponent
+        MenuComponent,
+        RegisterComponent
   ],
   imports: [
     BrowserModule,
