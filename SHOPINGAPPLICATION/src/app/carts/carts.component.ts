@@ -9,11 +9,11 @@ import { ShoppingWebService } from 'src/services/shoppingweb.service';
   styleUrls: ['./carts.component.css']
 })
 export class CartsComponent {
-  // resultdata:any;
-  // constructor(private cartsservice:Cartsservice,private router:Router){
-  //   this.cartsservice.CartsList().subscribe(data=>{
-  //     console.log(data);
-  //     this.resultdata=data;
-  //   })
-  // }
+  resultdata1:any;
+  constructor(private cartsservice:Cartsservice,private router:Router){
+    this.cartsservice.CartsList().subscribe(data=>{
+      console.log(data);
+      this.resultdata1=data;
+    })
+  }
 }

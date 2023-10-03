@@ -18,13 +18,16 @@ resultdata:any;
     })
   }
   carts(){
+    this.router.navigateByUrl("carts");
 
   }
-  orders(){}
-  showData(data:any)
-  {
-  console.log(data);
-  this.router.navigate(["updatelocation" , data])
+  orders(){
+
   }
+  // showData(data:any)
+  // {
+  // console.log(data);
+  // this.router.navigate(["updatelocation" , data])
+  // }
 
 }

@@ -12,6 +12,7 @@ import { ProductComponent } from './product/product.component';
 
 
 
+
 import { ShoppingWebService } from 'src/services/shoppingweb.service';
 import { LoginComponent } from './login/login.component';
 import { UserService } from 'src/services/users.ervice';
@@ -19,7 +20,12 @@ import { CartsComponent } from './carts/carts.component';
 import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
 import { Cartsservice } from 'src/services/cart.service';
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter(){
 
+  return sessionStorage.getItem("token");
+
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,13 +40,13 @@ import { Cartsservice } from 'src/services/cart.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
-  //   FormsModule,JwtModul.forRoot({
-  //     config:{
-  //       tokenGetter:tokenGetter,
-  //       allowedDomains:["http://localhost:5043/"]
-  //     }
-  // })
+    HttpClientModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:tokenGetter,
+        allowedDomains:["http://localhost:4200/"]
+      }
+  })
     
   ],
   providers: [ShoppingWebService,UserService,Cartsservice],

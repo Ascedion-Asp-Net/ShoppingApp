@@ -1,9 +1,9 @@
-<!-- 
-    <div  *ngIf="resultdata.length > 0 else nohotels" >
+
+    <div  *ngIf="resultdata1" >
     
     
-    <div class="alert alert-primary" *ngFor="let productdata of resultdata">
-        ProductId:{{productdata.CartId}}
+    <div class="alert alert-primary" *ngFor="let productdata of resultdata1">
+        UserId:{{productdata.CartId}}
         <br/>
         ProductName:{{productdata.ProductId}}
         <br/>
@@ -14,6 +14,5 @@
         <button>click the order</button>
        
     </div>
-    <ng-template #nohotels >
-        <div class="alert alert-warning">No product</div></ng-template>
-     -->
+    
+    
