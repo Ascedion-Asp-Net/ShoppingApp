@@ -18,11 +18,24 @@ namespace ShoppingApplication
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+         
+
+            builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
             //sush
-            builder.Services.AddControllers();
+          /*  builder.Services.AddControllers();*/
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
           /*  builder.Services.AddSwaggerGen();*/
+
+             builder.Services.AddCors(opts =>
+            {
+                opts.AddPolicy("MyCors", options =>
+                {
+                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
             #region Swagger Generation
 
             builder.Services.AddSwaggerGen(option =>
@@ -75,13 +88,7 @@ namespace ShoppingApplication
 
 
 
-            builder.Services.AddCors(opts =>
-            {
-                opts.AddPolicy("MyCors", options =>
-                {
-                    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-                });
-            });
+           
             builder.Services.AddDbContext<dbContext>(opts => {
                 opts.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
             });

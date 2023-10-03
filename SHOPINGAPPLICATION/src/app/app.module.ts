@@ -9,25 +9,38 @@ import{HttpClientModule}from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
-import { OrderComponent } from './order/order.component';
-import { UserComponent } from './user/user.component';
+
+
+
 import { ShoppingWebService } from 'src/services/shoppingweb.service';
+import { LoginComponent } from './login/login.component';
+import { UserService } from 'src/services/users.ervice';
+import { CartsComponent } from './carts/carts.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    OrderComponent,
-    UserComponent
+   
+    LoginComponent,
+        CartsComponent,
+        MenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+  //   FormsModule,JwtModul.forRoot({
+  //     config:{
+  //       tokenGetter:tokenGetter,
+  //       allowedDomains:["http://localhost:5043/"]
+  //     }
+  // })
     
   ],
-  providers: [ShoppingWebService],
+  providers: [ShoppingWebService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

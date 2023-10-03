@@ -1,0 +1,46 @@
+<body>
+    <div>
+      <table class="table">
+        <tr>
+          <th>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1578681041175-9717c16b0d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1460&q=80"
+                alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text"></p>
+                <a (click)="Hotel()" class="btn btn-primary ">Hotel</a>
+              </div>
+            </div>
+          </th>
+          <th>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top"
+                src="https://media.istockphoto.com/id/545817618/photo/door-in-forest.webp?b=1&s=170667a&w=0&k=20&c=yW_OhagyGAf_0zfZBjUFPWMb5HBe4Sx5_m_9r0Z4AUg="
+                alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text"></p>
+                <a (click)="Rooms()" class="btn btn-primary">Room</a>
+              </div>
+            </div>
+          </th>
+          <th>
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top"
+                src="https://media.istockphoto.com/id/1404931933/photo/gold-capital-letter-b.webp?b=1&s=170667a&w=0&k=20&c=Dtt0fx_QIHlRy9Y88pQlNjWSMTkhZesw362Et_h-Vb4="
+                alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text"></p>
+                <a (click)="Book()" class="btn btn-primary">Book</a>
+              </div>
+            </div>
+          </th>
+        </tr>
+        
+          <label class="logout">
+          <a (click)="logout()" class="btn btn-danger" >Logout</a>
+          </label><router-outlet></router-outlet>
+         </table>
+    </div>
+  </body>
+  
